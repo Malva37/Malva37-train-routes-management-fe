@@ -5,5 +5,5 @@ export enum DayType {
   WED = 'Wednesday',
   THU = 'Thursday',
   FRI = 'Friday',
-  SAT = 'Saturday',
+  SAT = 'Saturday'
 }

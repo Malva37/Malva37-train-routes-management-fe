@@ -1,4 +1,5 @@
 import { DayType } from './DayType';
+
 export interface TrainRouteRequest {
   numberOfTrain: string;
   fromCity: string;

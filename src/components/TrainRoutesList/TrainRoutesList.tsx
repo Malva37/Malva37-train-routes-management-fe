@@ -34,7 +34,7 @@ export const TrainRoutesList: React.FC = () => {
   return (
     <>
       <nav
-        className="navbar navbarFlex"
+        className="navbar py-2 navbarFlex"
         role="navigation"
         aria-label="main navigation"
       >
@@ -96,97 +96,104 @@ export const TrainRoutesList: React.FC = () => {
           </thead>
 
           <tbody>
-            {/* {trainRoutes 
-              ? (
-                
-              )
-              : (<p>there is no routes yeat</p>)
-            } */}
-
-            {visibleTrainRoutes.map((route) => (
-              <tr
-                key={route.id}
-                className={classNames({
-                  "has-background-light": !route.active,
-                })}
-              >
-                <td className="columnStyle">{route.numberOfTrain}</td>
-                <td className="columnStyle">{route.toCity}</td>
-                <td>{route.fromCity}</td>
-                <td className="columnStyle">
-                  {Array.isArray(route.dayOfDispatch)
-                    ? route.dayOfDispatch.join(", ")
-                    : route.dayOfDispatch}
-                </td>
-                <td className="columnStyle">{route.startTime}</td>
-                <td className="columnStyle">{route.durationInRoute}</td>
-                <td className="columnStyle">
-                  {!route.addInfo ? "--" : route.addInfo}
-                </td>
-                <td className="columnStyle">
-                  {route.active && (
-                    <span className="icon">
-                      <FontAwesomeIcon icon={faCheck} />
-                    </span>
-                  )}
-                </td>
-                <td className="has-text-right is-vcentered">
-                  <p className="buttons">
-                    <button
-                      className="button"
-                      onClick={() => {
-                        handleSelectRoute(route);
-                      }}
-                    >
+            {trainRoutes.length ? (
+              visibleTrainRoutes.map((route) => (
+                <tr
+                  key={route.id}
+                  className={classNames({
+                    "has-background-light": !route.active,
+                  })}
+                >
+                  <td className="columnStyle is-vcentered">
+                    {route.numberOfTrain}
+                  </td>
+                  <td className="columnStyle is-vcentered">{route.toCity}</td>
+                  <td className="columnStyle is-vcentered">{route.fromCity}</td>
+                  <td className="columnStyle is-vcentered">
+                    {route.dayOfDispatch.length === 7
+                      ? "every day"
+                      : Array.isArray(route.dayOfDispatch)
+                      ? route.dayOfDispatch.join(", ")
+                      : route.dayOfDispatch}
+                  </td>
+                  <td className="columnStyle is-vcentered">
+                    {route.startTime}
+                  </td>
+                  <td className="columnStyle is-vcentered">
+                    {route.durationInRoute}
+                  </td>
+                  <td className="columnStyle is-vcentered">
+                    {!route.addInfo ? "--" : route.addInfo}
+                  </td>
+                  <td className="columnStyle is-vcentered">
+                    {route.active && (
                       <span className="icon">
-                        <Link to="add">
-                          <FontAwesomeIcon icon={faEdit} />
-                        </Link>
+                        <FontAwesomeIcon icon={faCheck} />
                       </span>
-                    </button>
-
-                    {route.active ? (
-                      <button
-                        className="button"
-                        title="De-activate"
-                        onClick={() => {
-                          handleStatusRoute(route, false);
-                        }}
-                      >
-                        <span className="icon">
-                          <FontAwesomeIcon icon={faToggleOn} />
-                        </span>
-                      </button>
-                    ) : (
-                      <button
-                        className="button"
-                        title="Activate"
-                        onClick={() => {
-                          handleStatusRoute(route, true);
-                        }}
-                      >
-                        <span className="icon">
-                          <FontAwesomeIcon icon={faToggleOff} />
-                        </span>
-                      </button>
                     )}
-
-                    {route.active || (
+                  </td>
+                  <td className="is-vcentered">
+                    <p className="buttons">
                       <button
                         className="button"
                         onClick={() => {
-                          handleDeleteRoute(route.id);
+                          handleSelectRoute(route);
                         }}
                       >
                         <span className="icon">
-                          <FontAwesomeIcon icon={faTrash} />
+                          <Link to="add">
+                            <FontAwesomeIcon icon={faEdit} />
+                          </Link>
                         </span>
                       </button>
-                    )}
-                  </p>
-                </td>
+
+                      {route.active ? (
+                        <button
+                          className="button"
+                          title="De-activate"
+                          onClick={() => {
+                            handleStatusRoute(route, false);
+                          }}
+                        >
+                          <span className="icon">
+                            <FontAwesomeIcon icon={faToggleOn} />
+                          </span>
+                        </button>
+                      ) : (
+                        <button
+                          className="button"
+                          title="Activate"
+                          onClick={() => {
+                            handleStatusRoute(route, true);
+                          }}
+                        >
+                          <span className="icon">
+                            <FontAwesomeIcon icon={faToggleOff} />
+                          </span>
+                        </button>
+                      )}
+
+                      {route.active || (
+                        <button
+                          className="button"
+                          onClick={() => {
+                            handleDeleteRoute(route.id);
+                          }}
+                        >
+                          <span className="icon">
+                            <FontAwesomeIcon icon={faTrash} />
+                          </span>
+                        </button>
+                      )}
+                    </p>
+                  </td>
+                </tr>
+              ))
+            ) : (
+              <tr>
+                <td>No routes</td>
               </tr>
-            ))}
+            )}
           </tbody>
         </table>
       </div>
