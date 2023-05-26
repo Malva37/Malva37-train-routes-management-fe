@@ -84,9 +84,9 @@ export const TrainRoutesList: React.FC = () => {
           <thead>
             <tr className="has-background-link-light">
               <th className="columnStyle">Number of Train</th>
-              <th className="columnStyle">Source City</th>
-              <th className="columnStyle">Destination City</th>
-              <th className="columnStyle">Date of dispatch</th>
+              <th className="columnStyle">To</th>
+              <th className="columnStyle">From</th>
+              <th className="columnStyle">Departure days</th>
               <th className="columnStyle">Start time</th>
               <th className="columnStyle">Duration in route</th>
               <th className="columnStyle">Additional information</th>

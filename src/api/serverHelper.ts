@@ -20,5 +20,5 @@ export const addTrainRoute = async (route: TrainRoute) => {
 };
 
 export const updateTrainRoute = (routeId: string, route: TrainRoute) => {
-  return client.patch<TrainRoute>(`/trainroutes/${routeId}`, route);
+  return client.put<TrainRoute>(`/trainroutes/${routeId}`, route);
 };
